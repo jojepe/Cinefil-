@@ -21,7 +21,7 @@ struct Movie: Identifiable {
     var isFavorite: Bool = false
     var isWatched: Bool = false
     
-    //@Binding var rating: Int
+    var rating: Int
     var maximumRating = 5
     
 }
