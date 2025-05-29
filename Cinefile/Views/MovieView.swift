@@ -32,6 +32,9 @@ struct MovieDetailView: View {
                         Text("Diretor: \(movie.director)")
                             .font(.body)
                         
+                        Text("Roteristas: \(movie.writers)")
+                            .font(.body)
+                        
                         Text("Ano: \(movie.year)")
                             .font(.body)
                     }
@@ -57,5 +60,5 @@ struct MovieDetailView: View {
 
 
 #Preview {
-    MovieDetailView(movie: Movie(poster: "posterMockUp", title: "Turma Da Mônica: Uma Aventura no Tempo", year: "2007", synopsis: "Franjinha está construindo uma máquina do tempo e precisa reunir moléculas dos quatro elementos: ar, água, fogo e terra. Mônica joga Sansão e, sem querer, acerta o aparelho, espalhando os elementos. Agora a turma precisa consertá-la.", director: "Maurício de Souza", writers: "Mauricio de Sousa, Flávio de Souza, Didi Oliveira, Emerson Bernardo de Abreu"))
+    MovieDetailView(movie: Movie(poster: "land", title: "La La Land", year: "2017", synopsis: "O pianista Sebastian conhece a atriz Mia, e os dois se apaixonam perdidamente. Em busca de oportunidades para suas carreiras na competitiva Los Angeles, os jovens tentam fazer o relacionamento amoroso dar certo, enquanto perseguem fama e sucesso.", director: "Damien Chazelle", writers: "Damien Chazelle", isFavorite: false, isWatched: false, rating: 0))
 }
