@@ -14,28 +14,34 @@ struct CatalogView: View {
     
     let columns = [
         GridItem(.adaptive(minimum: 100))
-        ]
-        
+    ]
+    
     var body: some View {
         ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(data, id: \.self) { item in
-                            VStack {
-                                Image(movie.poster)
-                                    .resizable()
-                                    .frame(width: 120, height: 202)
-                                
-                                Text(movie.title)
-                                    .font(.system(size: 12))
-                                
-                            }
+            VStack {
+                Image("logo")
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(data, id: \.self) { item in
+                        VStack {
+                            Image(movie.poster)
+                                .resizable()
+                                .frame(width: 120, height: 202)
+                            
+                            Text(movie.title)
+                                .font(.system(size: 12))
+                                .foregroundStyle(.white)
+                            
                         }
                     }
-                    .padding(.horizontal)
                 }
+                .padding(.horizontal)
             }
+            .background(LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom))
+            
+        }
     }
+}
 
 #Preview {
-    CatalogView(movie: Movie(poster: "posterMockUp", title: "Turma Da Mônica: Uma Aventura no Tempo", year: "2007", synopsis: "Franjinha está construindo uma máquina do tempo e precisa reunir moléculas dos quatro elementos: ar, água, fogo e terra. Mônica joga Sansão e, sem querer, acerta o aparelho, espalhando os elementos. Agora a turma precisa consertá-la.", director: "Maurício de Souza", writers: "Mauricio de Sousa, Flávio de Souza, Didi Oliveira, Emerson Bernardo de Abreu"))
+    CatalogView(movie: Movie(poster: "barbie", title: "Barbie a Princesa e a Plebeia", year: "2004", synopsis: "Uma plebeia, moradora de um vilarejo, é muito parecida com a princesa do reino. Os destinos das duas se cruzam quando a princesa é sequestrada, e a moça humilde usa sua incrível semelhança com ela para tentar salvar das mãos do vilão.", director: "William Lau", writers: "Cliff Ruby, Elana Lesser, Ruth Handler", isFavorite: false, isWatched: false, rating: 0))
 }
