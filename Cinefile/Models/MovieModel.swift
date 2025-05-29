@@ -11,6 +11,7 @@ import Foundation
 struct Movie: Identifiable {
     var id = UUID()
     
+    var poster: String
     var title: String
     var year: String
     var synopsis: String
@@ -20,7 +21,7 @@ struct Movie: Identifiable {
     var isFavorite: Bool = false
     var isWatched: Bool = false
     
-    @Binding var rating: Int = 0
+    //@Binding var rating: Int
     var maximumRating = 5
     
 }
