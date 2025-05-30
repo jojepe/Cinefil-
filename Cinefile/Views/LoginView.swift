@@ -12,11 +12,14 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
+            VStack {
+                
+                
+                Image("introImage")
+                    .resizable()
+                    .scaledToFit()
                 
                 VStack(spacing: 24) {
-                    Spacer()
-                    Image("logo")
-                        .offset(y: showModal ? -150 : 0)
                     
                     NavigationLink(destination: SenhaView()) {
                         Text("Fazer login")
@@ -37,11 +40,14 @@ struct LoginView: View {
                         }
                     }
                 }
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(
-                        Gradient(colors: [.fundoEscuro, .fundoClaro])
-                    )
+                
+            }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                Gradient(colors: [.fundoEscuro, .fundoClaro])
+            )
+                   
                     // Uncomment when SignInModel is ready:
                     // .sheet(isPresented: $showModal) {
                     //     SignInModel()

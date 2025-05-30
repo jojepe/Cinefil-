@@ -19,6 +19,10 @@ struct CadastroView: View {
             VStack(alignment: .center, spacing: 24) {
                 Spacer()
                 
+                Image("logotipo")
+                    .resizable()
+                    .frame(width: 208, height: 130)
+                
                 VStack (alignment: .leading){
                     Text("Usuário")
                         .foregroundStyle(.menta)
@@ -81,8 +85,8 @@ struct CadastroView: View {
                     .textContentType(.emailAddress)
                 }
                 
-                NavigationLink(destination: ContentView()) {
-                    Text("Criar link")
+                NavigationLink(destination: IntroView()) {
+                    Text("Criar conta")
                         .frame(maxWidth: .infinity, maxHeight: 50)
                         .background(.black)
                         .foregroundStyle(.white)

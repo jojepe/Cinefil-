@@ -17,48 +17,54 @@ struct SenhaView: View {
         NavigationStack {
                 
             VStack(alignment: .center, spacing: 24) {
-                    Spacer()
-                   
-                VStack (alignment: .leading){
-                    Text("E-mail")
-                        .foregroundStyle(.menta)
-                        .font(.title3.bold())
+                Spacer()
+                
+                Image("logotipo")
+                    .resizable()
+                    .frame(width: 208, height: 130)
+                
+               
                     
-                    
-                    TextField(
-                        "",
-                        text: $email,
-                        prompt: Text("Insira o seu e-mail")
-                            .foregroundStyle(.white)
-                            .font(.caption)
-                    )
-                    .padding()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.white)
+                    VStack (alignment: .leading){
+                        Text("E-mail")
+                            .foregroundStyle(.menta)
+                            .font(.title3.bold())
+                        
+                        
+                        TextField(
+                            "",
+                            text: $email,
+                            prompt: Text("Insira o seu e-mail")
+                                .foregroundStyle(.white)
+                                .font(.caption)
+                        )
+                        .padding()
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.white)
+                        }
+                        .textContentType(.emailAddress)
                     }
-                    .textContentType(.emailAddress)
-                }
                     
-                VStack (alignment: .leading){
-                    Text("Senha")
-                        .foregroundStyle(.menta)
-                        .font(.title3.bold())
-                    
-                    TextField(
-                        "",
-                        text: $password,
-                        prompt: Text("Insira sua senha")
-                            .foregroundStyle(.white)
-                            .font(.caption)
-                    )
-                    .padding()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.white)
+                    VStack (alignment: .leading){
+                        Text("Senha")
+                            .foregroundStyle(.menta)
+                            .font(.title3.bold())
+                        
+                        TextField(
+                            "",
+                            text: $password,
+                            prompt: Text("Insira sua senha")
+                                .foregroundStyle(.white)
+                                .font(.caption)
+                        )
+                        .padding()
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.white)
+                        }
+                        .textContentType(.emailAddress)
                     }
-                    .textContentType(.emailAddress)
-                }
                     
                     NavigationLink(destination: ContentView()) {
                         Text("Fazer login")
@@ -67,10 +73,11 @@ struct SenhaView: View {
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
-             
+                    
                     Text("Não tem uma conta? Faça seu cadastro")
-                    .foregroundStyle(.white)
+                        .foregroundStyle(.white)
                 }
+            
                 
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
