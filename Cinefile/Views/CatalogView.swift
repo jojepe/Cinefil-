@@ -27,6 +27,7 @@ struct CatalogView: View {
                                 .resizable()
                                 .frame(width: 120, height: 202)
                             
+                            
                             Text(movie.title)
                                 .font(.system(size: 12))
                                 .foregroundStyle(.white)
@@ -34,8 +35,9 @@ struct CatalogView: View {
                         }
                     }
                 }
-                .padding(.horizontal)
+                .padding(5)
             }
+        
             .background(LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom))
             
         }

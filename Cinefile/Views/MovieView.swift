@@ -64,7 +64,10 @@ struct MovieDetailView: View {
                             }
                         }
                         .padding(10)
-                        .border(.rosaNeon)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.rosaNeon)
+                        }
 
                       
                         
