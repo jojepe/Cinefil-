@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let movie: Movie
+    let dataModel = DataModel()
     
     var body: some View {
+        NavigationStack {
             VStack (spacing: 10) {
                 Image("profile")
                     .resizable()
@@ -25,40 +26,56 @@ struct ProfileView: View {
                 
                 Text("bio aqui")
                     .foregroundStyle(.white)
+                    .font(.caption)
                 
-                
-                Text("Filmes favoritos")
-                    .foregroundStyle(.white)
-                
-                ScrollView {
-                    HStack {
-                        Image("kiki")
-                            .resizable()
-                            .frame (width: 120, height: 202)
-                        
+                VStack (alignment: .leading){ // filmes favs
+                    Text("Filmes favoritos")
+                        .foregroundStyle(.white)
+                        .font(.title3 .bold())
+                    
+                    ScrollView (.horizontal) {
+                        HStack (spacing: 30) {
+                            ForEach (dataModel.filmLists, id: \.title) { movie in
+                                
+                                NavigationLink {
+                                    MovieDetailView(movie: movie)
+                                } label: {
+                                    CardMovieView(movie: movie)
+                                }
+                            }
+                        }
                     }
                 }
                 
-                Text("Atividade recente")
-                    .foregroundStyle(.white)
-                
-                ScrollView {
-                    HStack {
-                        Image("kiki")
-                            .resizable()
-                            .frame (width: 120, height: 202)
-                        
+                VStack (alignment: .leading) {
+                    Text("Atividade recente")
+                        .foregroundStyle(.white)
+                        .font(.title3 .bold())
+                    
+                    ScrollView (.horizontal) {
+                        HStack (spacing: 30) {
+                            ForEach (dataModel.filmLists, id: \.title) { movie in
+                                
+                                NavigationLink {
+                                    MovieDetailView(movie: movie)
+                                } label: {
+                                    CardMovieView(movie: movie)
+                                }
+                            }
+                        }
                     }
                 }
                 
                 Spacer()
                 
             }
+            .padding()
             .frame(maxWidth: .infinity)
             .background(LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom))
+        }
     }
 }
 
 #Preview {
-    ProfileView(movie: Movie(poster: "land", title: "La La Land", year: "2017", synopsis: "O pianista Sebastian conhece a atriz Mia, e os dois se apaixonam perdidamente. Em busca de oportunidades para suas carreiras na competitiva Los Angeles, os jovens tentam fazer o relacionamento amoroso dar certo, enquanto perseguem fama e sucesso.", director: "Damien Chazelle", writers: "Damien Chazelle", isFavorite: false, isWatched: false, rating: 0))
+    ProfileView()
 }
