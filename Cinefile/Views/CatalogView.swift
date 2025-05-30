@@ -18,30 +18,34 @@ struct CatalogView: View {
     var body: some View {
         NavigationStack{
             
-            ScrollView {
-                
-                VStack {
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom)
+                ScrollView {
                     
-                    Image("logo")
-                    
-                    LazyVGrid(columns: columns, spacing: 30) {
-                        ForEach(dataModel.filmLists, id: \.title) { movie in
-                            
-                            NavigationLink{
-                                
-                                MovieDetailView(movie: movie)
-                                
-                            } label:{
-                                CardMovieView(movie: movie)
-                                
+                    VStack {
+                        Spacer()
+                            .frame(height: 60)
+                        
+                        Image("logo")
+                        
+                        LazyVGrid(columns: columns, spacing: 30) {
+                            ForEach(dataModel.filmLists, id: \.title) { movie in
+                                NavigationLink{
+                                    MovieDetailView(movie: movie)
+                                    
+                                } label:{
+                                    CardMovieView(movie: movie)
+                                    
+                                }
                             }
                         }
+                        .padding(5)
                     }
-                    .padding(5)
+                    
                 }
-                .background(LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom))
-                .frame(maxWidth: .infinity)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
         }
     }
 }
