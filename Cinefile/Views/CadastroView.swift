@@ -31,7 +31,7 @@ struct CadastroView: View {
                     
                     TextField(
                         "",
-                        text: $email,
+                        text: $user,
                         prompt: Text("Insira o seu nome de usuário")
                             .foregroundStyle(.white)
                             .font(.caption)
