@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    let dataModel = DataModel()
-    
+    @Binding var dataModel: DataModel
+
     var body: some View {
         NavigationStack {
             VStack (spacing: 10) {
@@ -35,12 +35,14 @@ struct ProfileView: View {
                     
                     ScrollView (.horizontal) {
                         HStack (spacing: 30) {
-                            ForEach (dataModel.filmLists, id: \.title) { movie in
-                                
-                                NavigationLink {
-                                    MovieDetailView(movie: movie)
-                                } label: {
-                                    CardMovieView(movie: movie)
+                            ForEach (dataModel.filmLists.indices, id: \.self) { index in
+                                if dataModel.filmLists[index].isFavorite{
+                                    NavigationLink {
+                                        // ✅ Passa o Binding para o filme específico
+                                        MovieDetailView(movie: $dataModel.filmLists[index])
+                                    } label: {
+                                        CardMovieView(movie: dataModel.filmLists[index])
+                                    }
                                 }
                             }
                         }
@@ -54,12 +56,12 @@ struct ProfileView: View {
                     
                     ScrollView (.horizontal) {
                         HStack (spacing: 30) {
-                            ForEach (dataModel.filmLists, id: \.title) { movie in
-                                
+                            ForEach (dataModel.filmLists.indices, id: \.self) { index in
                                 NavigationLink {
-                                    MovieDetailView(movie: movie)
+                                    // ✅ Passa o Binding para o filme específico
+                                    MovieDetailView(movie: $dataModel.filmLists[index])
                                 } label: {
-                                    CardMovieView(movie: movie)
+                                    CardMovieView(movie: dataModel.filmLists[index])
                                 }
                             }
                         }
@@ -76,6 +78,4 @@ struct ProfileView: View {
     }
 }
 
-#Preview {
-    ProfileView()
-}
+

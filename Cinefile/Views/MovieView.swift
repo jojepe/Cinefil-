@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieDetailView: View {
     
-    let movie: Movie
+    @Binding var movie: Movie
     
     var body: some View {
         VStack(alignment: .leading, spacing: 17){
@@ -42,15 +42,22 @@ struct MovieDetailView: View {
                             .foregroundStyle(.white)
                         
                         HStack (spacing: 50) {
-                            VStack {
-                                Image(systemName: "heart")
-                                    .font(.title2)
-                                    .foregroundStyle(.rosaNeon)
-                                
-                                Text("Favorito")
-                                    .foregroundStyle(.rosaNeon)
-                                    .font(.footnote)
+                            Button {
+                                movie.isFavorite.toggle()
+                                print("favoritado")
+                                }label: {
+                                    VStack {
+                                        Image(systemName: "heart")
+                                            .font(.title2)
+                                            .foregroundStyle(.rosaNeon)
+                                        
+                                        Text("Favorito")
+                                            .foregroundStyle(.rosaNeon)
+                                            .font(.footnote)
+                                    
+                                }
                             }
+                            
                             
                             
                             VStack {
@@ -101,5 +108,5 @@ struct MovieDetailView: View {
 
 
 #Preview {
-    MovieDetailView(movie: Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums", year: "2002", synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.", director: "Wes Anderson", writers: "Wes Anderson, Owen Wilson", isFavorite: false, isWatched: false, rating: 0))
+    MovieDetailView(movie: .constant(Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums", year: "2002", synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.", director: "Wes Anderson", writers: "Wes Anderson, Owen Wilson", isFavorite: false, isWatched: false, rating: 0)))
 }

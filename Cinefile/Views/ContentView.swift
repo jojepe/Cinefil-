@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var dataModel: DataModel = .init()
+    
     init() {
         UITabBar.appearance().backgroundColor = .white
         }
+    
     var body: some View {
                 
         TabView {
             
             Tab("Players", systemImage: "film.stack"){
-                CatalogView()
+                CatalogView(dataModel: $dataModel)
             }
             
             Tab("Contatos", systemImage: "magnifyingglass") {
@@ -24,7 +28,7 @@ struct ContentView: View {
             }
             
             Tab("Perfil", systemImage: "person.circle") {
-                ProfileView()
+                ProfileView(dataModel: $dataModel)
             }
         }
         .tint(.menta)
