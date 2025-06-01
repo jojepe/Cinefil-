@@ -44,10 +44,7 @@ struct MovieDetailView: View {
                         Spacer()
                             .frame(height: 3)
                         
-                        HStack {
-                            
-                            Spacer()
-                                .frame(width: 20)
+                        VStack {
                             
                             HStack (spacing: 50) {
                                 
@@ -83,12 +80,22 @@ struct MovieDetailView: View {
                                 
                                 
                             }
-                            .padding(10)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 20)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 12)
                                     .stroke(Color.rosaNeon)
                             }
+                            
+                            StarRatingView(rating: $movie.rating)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal, 20)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.rosaNeon)
+                                }
                         }
+                        
                     }
                 }
             }

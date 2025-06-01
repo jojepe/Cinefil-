@@ -130,7 +130,6 @@ struct ProfileView: View {
                 .padding(.bottom, 30)
             }
             .background(LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom).ignoresSafeArea())
-            .navigationTitle("Perfil")
             .navigationBarTitleDisplayMode(.inline)
   
         }
