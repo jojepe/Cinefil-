@@ -14,13 +14,13 @@ struct MovieDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 17){
             
-            HStack(alignment: .top){
+            HStack(alignment: .top, spacing: 10){
                 
                 Image(movie.poster)
                     .resizable()
                     .frame(width: 160, height: 250)
                 
-                VStack {
+                VStack{
                     
                     VStack(alignment: .leading, spacing: 10){
                         
@@ -41,53 +41,55 @@ struct MovieDetailView: View {
                             .font(.body)
                             .foregroundStyle(.white)
                         
-                        HStack (spacing: 50) {
-                            Button {
-                                movie.isFavorite.toggle()
-                                print("favoritado")
-                                }label: {
+                        Spacer()
+                            .frame(height: 3)
+                        
+                        HStack {
+                            
+                            Spacer()
+                                .frame(width: 20)
+                            
+                            HStack (spacing: 50) {
+                                
+                                Button {
+                                    movie.isFavorite.toggle()
+                                    }label: {
+                                        VStack {
+                                            Image(systemName: movie.isFavorite ? "heart.fill" : "heart")
+                                                .font(.title2)
+                                                .foregroundStyle(.rosaNeon)
+                                            
+                                            Text("Favorito")
+                                                .foregroundStyle(.rosaNeon)
+                                                .font(.footnote)
+                                        
+                                    }
+                                }
+                                
+                                Button {
+                                    movie.isWatched.toggle()
+                                } label: {
                                     VStack {
-                                        Image(systemName: "heart")
+                                        // Ícone muda com base no estado de isWatched
+                                        Image(systemName: movie.isWatched ? "eye.fill" : "eye")
                                             .font(.title2)
                                             .foregroundStyle(.rosaNeon)
                                         
-                                        Text("Favorito")
+                                        Text("Assistido")
                                             .foregroundStyle(.rosaNeon)
                                             .font(.footnote)
-                                    
+                                    }
                                 }
-                            }
-                            
-                            
-                            
-                            VStack {
-                                Image(systemName: "eye")
-                                    .font(.title2)
-                                    .foregroundStyle(.rosaNeon)
                                 
-                                Text("Assistido")
-                                    .foregroundStyle(.rosaNeon)
-                                    .font(.footnote)
+                                
+                            }
+                            .padding(10)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.rosaNeon)
                             }
                         }
-                        .padding(10)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.rosaNeon)
-                        }
-
-                      
-                        
-                        
                     }
-                }
-                
-                VStack {
-                    
-                    // implement favorito e visto button
-                    
-                    // implementing rating
-                    
                 }
             }
             
