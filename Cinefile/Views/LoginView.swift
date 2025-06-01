@@ -40,9 +40,9 @@ struct LoginView: View {
                         }
                     }
                 }
-                
+                .padding()
             }
-            .padding()
+        
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 Gradient(colors: [.fundoEscuro, .fundoClaro])

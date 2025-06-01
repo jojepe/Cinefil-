@@ -51,13 +51,11 @@ struct SenhaView: View {
                             .foregroundStyle(.menta)
                             .font(.title3.bold())
                         
-                        TextField(
-                            "",
+                        TextField(" ",
                             text: $password,
                             prompt: Text("Insira sua senha")
                                 .foregroundStyle(.white)
-                                .font(.caption)
-                        )
+                                .font(.caption) )
                         .padding()
                         .overlay {
                             RoundedRectangle(cornerRadius: 20)
