@@ -29,7 +29,7 @@ struct ContentView: View {
     var body: some View {
         
         TabView {
-            Tab("Players", systemImage: "film.stack"){
+            Tab("Catálogo", systemImage: "film.stack"){
                 CatalogView(dataModel: $dataModel)
             }
             
