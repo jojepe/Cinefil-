@@ -24,9 +24,12 @@ struct CatalogView: View {
                     
                     VStack {
                         Spacer()
-                            .frame(height: 60)
+                            .frame(height: 80)
                         
                         Image("logo")
+                            .resizable()
+                            .frame(width:74, height:55)
+                            .scaledToFit()
                         
                         LazyVGrid(columns: columns, spacing: 30) {
                             ForEach(dataModel.filmLists.indices, id: \.self) { index in
@@ -42,7 +45,10 @@ struct CatalogView: View {
                                 }
                             }
                         }
-                        .padding(5)
+                        .padding(10)
+                        
+                        Spacer()
+                            .frame(height: 90)
                     }
                     
                 }
@@ -52,5 +58,3 @@ struct CatalogView: View {
         }
     }
 }
-
-

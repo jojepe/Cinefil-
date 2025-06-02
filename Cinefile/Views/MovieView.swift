@@ -14,7 +14,7 @@ struct MovieDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 17){
             
-            HStack(alignment: .top, spacing: 10){
+            HStack(alignment: .top, spacing: 15){
                 
                 Image(movie.poster)
                     .resizable()
@@ -22,7 +22,7 @@ struct MovieDetailView: View {
                 
                 VStack{
                     
-                    VStack(alignment: .leading, spacing: 10){
+                    VStack(alignment: .leading, spacing: 5){
                         
                         Text(movie.title)
                             .font(.title2)
@@ -40,13 +40,13 @@ struct MovieDetailView: View {
                         Text("Ano: \(movie.year)")
                             .font(.body)
                             .foregroundStyle(.white)
-                        
+                                          
                         Spacer()
-                            .frame(height: 3)
+                            .frame(height: 5)
                         
-                        VStack {
+                        VStack (spacing: 10){
                             
-                            HStack (spacing: 50) {
+                            HStack (spacing: 40) {
                                 
                                 Button {
                                     movie.isFavorite.toggle()
@@ -58,7 +58,7 @@ struct MovieDetailView: View {
                                             
                                             Text("Favorito")
                                                 .foregroundStyle(.rosaNeon)
-                                                .font(.footnote)
+                                                .font(.system(size: 10))
                                         
                                     }
                                 }
@@ -74,14 +74,14 @@ struct MovieDetailView: View {
                                         
                                         Text("Assistido")
                                             .foregroundStyle(.rosaNeon)
-                                            .font(.footnote)
+                                            .font(.system(size:10))
                                     }
                                 }
                                 
                                 
                             }
                             .padding(.vertical, 10)
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 36)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 12)
                                     .stroke(Color.rosaNeon)

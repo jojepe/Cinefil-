@@ -44,11 +44,11 @@ struct ProfileView: View {
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.menta.opacity(0.8), lineWidth: 2)) // Borda sutil
 
-                        Text("seu usuário aqui") // Placeholder
+                        Text("spirit_lover_S2") // Placeholder
                             .font(.title2.bold())
                             .foregroundStyle(Color.menta)
 
-                        Text("bio aqui") // Placeholder
+                        Text("EU AMO SPIRIT!!!!!") // Placeholder
                             .font(.subheadline)
                             .foregroundStyle(Color.white.opacity(0.7))
                             .multilineTextAlignment(.center)
