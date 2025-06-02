@@ -13,7 +13,9 @@ struct PesquisaView: View {
             return []
         } else {
             return dataModel.filmLists.filter { movie in
-                movie.title.localizedCaseInsensitiveContains(searchText)
+                movie.title.localizedCaseInsensitiveContains(searchText) || movie.genres.contains { genre in 
+                    genre.localizedCaseInsensitiveContains(searchText)
+                }
             }
         }
     }
