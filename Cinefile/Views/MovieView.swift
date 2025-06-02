@@ -103,8 +103,18 @@ struct MovieDetailView: View {
             Text("Sinopse: \(movie.synopsis)")
                 .foregroundStyle(.white)
         
-            Text("Inserir tags")
-                .foregroundStyle(.white)
+            HStack{
+                ForEach(movie.genres, id: \.self) { genre in
+                    Text(genre)
+                        .foregroundStyle(.white)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 8)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.white)
+                        }
+                }
+            }
             
             Spacer()
                 
@@ -117,5 +127,5 @@ struct MovieDetailView: View {
 
 
 #Preview {
-    MovieDetailView(movie: .constant(Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums", year: "2002", synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.", director: "Wes Anderson", writers: "Wes Anderson, Owen Wilson", isFavorite: false, isWatched: false, rating: 0)))
+    MovieDetailView(movie: .constant(Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums", year: "2002", synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.", director: "Wes Anderson", writers: "Wes Anderson, Owen Wilson", isFavorite: false, isWatched: false, rating: 0, genres: ["Animação", "Comédia", "Musical"])))
 }
