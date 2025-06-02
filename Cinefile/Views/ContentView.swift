@@ -29,7 +29,6 @@ struct ContentView: View {
     var body: some View {
         
         TabView {
-            
             Tab("Players", systemImage: "film.stack"){
                 CatalogView(dataModel: $dataModel)
             }

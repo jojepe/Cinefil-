@@ -115,6 +115,7 @@ struct PesquisaView: View {
                                                 .stroke(Color.white)
                                         }
                                 }
+                                
                                 HStack{
                                     Text("Ficção científica")
                                         .foregroundStyle(.white)
