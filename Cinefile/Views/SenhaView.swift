@@ -82,11 +82,6 @@ struct SenhaView: View {
                     .background(
                         Gradient(colors: [.fundoEscuro, .fundoClaro])
                     )
-                    // Uncomment when SignInModel is ready:
-                    // .sheet(isPresented: $showModal) {
-                    //     SignInModel()
-                    //         .presentationDetents([.height(516)])
-                    // }
                 }
             }
         }

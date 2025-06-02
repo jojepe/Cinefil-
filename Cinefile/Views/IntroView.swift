@@ -43,6 +43,7 @@ struct IntroView: View {
                 .padding(.bottom, 50)
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

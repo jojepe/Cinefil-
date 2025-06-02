@@ -24,4 +24,6 @@ struct Movie: Identifiable {
     var rating: Int
     var maximumRating = 5
     
+    var genres: [String] = []
+    
 }
