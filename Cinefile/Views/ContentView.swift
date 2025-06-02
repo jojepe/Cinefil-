@@ -12,12 +12,22 @@ struct ContentView: View {
     @State var dataModel: DataModel = .init()
     
     init() {
-        UITabBar.appearance().backgroundColor = .white
-        }
+                let appearance = UITabBarAppearance()
+                appearance.configureWithTransparentBackground()
+    //ULTRA THIN KKKKK
+
+                appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+                UITabBar.appearance().standardAppearance = appearance
+                
+                if #available(iOS 15.0, *) {
+                    UITabBar.appearance().scrollEdgeAppearance = appearance
+                }
+            }
+        
     
     
     var body: some View {
-                
+        
         TabView {
             
             Tab("Players", systemImage: "film.stack"){

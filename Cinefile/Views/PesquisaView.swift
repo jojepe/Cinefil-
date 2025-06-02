@@ -3,6 +3,8 @@ import SwiftUI
 struct PesquisaView: View {
     @Binding var dataModel: DataModel
     @State private var searchText = ""
+    
+   // let showGenre: Bool = true
 
     let columns = [
         GridItem(.adaptive(minimum: 100))
@@ -27,7 +29,7 @@ struct PesquisaView: View {
                     .ignoresSafeArea()
 
                 ScrollView {
-                    VStack {
+                    VStack (alignment: .leading) {
                         Spacer().frame(height: 20)
                         
                         TextField("Pesquisar filmes", text: $searchText)
@@ -36,12 +38,112 @@ struct PesquisaView: View {
                             .cornerRadius(20)
                             .padding(.horizontal)
                             .padding(.bottom, 20)
-
+                        
+                        
                         // 4. Atualizar a LazyVGrid para usar a lista filtrada
+                        if searchText.isEmpty{
+                            VStack (alignment: .leading){
+                                Text("Gêneros")
+                                    .font(.title3.bold())
+                                    .foregroundStyle(.white)
+                                    .padding(20)
+
+                                HStack{
+                                    
+                                    Text("Ação")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                        }
+                                    
+                                    Text("Animação")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                        }
+                                    
+                                    Text("Aventura")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                        }
+                                    
+                                    Text("Comédia")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                        }
+                                }
+                                HStack{
+                                    
+                                    Text("Drama")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                        }
+                                    
+                                    Text("Esporte")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                        }
+                                    
+                                    Text("Fantasia")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                        }
+                                }
+                                HStack{
+                                    Text("Ficção científica")
+                                        .foregroundStyle(.white)
+                                        .padding(.vertical, 6)
+                                        .padding(.horizontal, 8)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.white)
+                                            
+                                        }
+                                            Text("Musical")
+                                                .foregroundStyle(.white)
+                                                .padding(.vertical, 6)
+                                                .padding(.horizontal, 8)
+                                                .overlay {
+                                                    RoundedRectangle(cornerRadius: 12)
+                                                        .stroke(Color.white)
+                                                }
+                                        
+                                }
+                            }
+                            .padding()
+                        }
+                        
                         if filteredFilmLists.isEmpty && !searchText.isEmpty {
                             Text("Nenhum filme encontrado para \"\(searchText)\".")
                                 .foregroundColor(.white) // Ou uma cor adequada para seu tema
                                 .padding(.top, 30)
+                            
                         } else if filteredFilmLists.isEmpty && searchText.isEmpty && dataModel.filmLists.isEmpty {
                             Text("Nenhum filme na lista.")
                                 .foregroundColor(.white)
@@ -68,6 +170,10 @@ struct PesquisaView: View {
             }
         }
     }
+}
+
+#Preview {
+    PesquisaView(dataModel: .constant(DataModel()))
 }
 
 
