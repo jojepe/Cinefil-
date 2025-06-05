@@ -40,8 +40,8 @@ struct ContentView: View {
                 .tag(tabIdentifier.catalogo) // Tag aplicada à CatalogView
             
             
-            PesquisaView(dataModel: $dataModel, initialSearchText: genreToSearch, onSearchHandled: {
-                genreToSearch = nil 
+            PesquisaView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch, initialSearchText: genreToSearch, onSearchHandled: {
+                genreToSearch = nil
             })
             .tabItem {
                 Label("Pesquisa", systemImage: "magnifyingglass")

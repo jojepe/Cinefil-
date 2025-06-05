@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-// Presume-se que as seguintes structs e extensões estejam definidas em outro lugar
-// e acessíveis:
-// - struct Movie: Identifiable { ... var isFavorite: Bool, var isWatched: Bool ... }
-// - struct DataModel { var filmLists: [Movie] }
-// - extension Color { .menta, .fundoEscuro, .fundoClaro }
-// - struct MovieDetailView: View { @Binding var movie: Movie ... }
-// - struct CardMovieView: View { var movie: Movie ... }
-// Se não estiverem, você precisará adicioná-las ou importá-las.
-
 struct ProfileView: View {
     
     @Binding var dataModel: DataModel

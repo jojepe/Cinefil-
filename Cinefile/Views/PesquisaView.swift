@@ -6,6 +6,9 @@ struct PesquisaView: View {
     @State private var searchText = ""
     @FocusState private var isSearchFieldFocused: Bool
     
+    @Binding var selectedTab: ContentView.tabIdentifier
+    @Binding var genreToSearch: String?
+    
     // let showGenre: Bool = true
     
     var initialSearchText: String?
@@ -21,7 +24,6 @@ struct PesquisaView: View {
         GridItem(.adaptive(minimum: 100)),
         GridItem(.adaptive(minimum: 100)),
         GridItem(.adaptive(minimum: 100)),
-
     ]
     
     var genresList: [String] {
@@ -115,7 +117,7 @@ struct PesquisaView: View {
                                     
                                     if let originalIndex = dataModel.filmLists.firstIndex(where: { $0.id == movieInFilteredList.id }) {
                                         NavigationLink {
-                                            MovieDetailView(movie: $dataModel.filmLists[originalIndex], selectedTab: .constant(.pesquisa), genreToSearch: .constant(nil))
+                                            MovieDetailView(movie: $dataModel.filmLists[originalIndex], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                         } label: {
                                             CardMovieView(movie: movieInFilteredList)
                                         }
@@ -138,8 +140,8 @@ struct PesquisaView: View {
     }
 }
 
-#Preview {
-    PesquisaView(dataModel: .constant(DataModel()), initialSearchText: "Ação")
-}
+//#Preview {
+//    PesquisaView(dataModel: .constant(DataModel()), initialSearchText: "Ação")
+//}
 
 
