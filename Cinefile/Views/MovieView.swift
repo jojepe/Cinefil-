@@ -48,59 +48,78 @@ struct MovieDetailView: View {
                         Spacer()
                             .frame(height: 5)
                         
-                        VStack (spacing: 10){
-                            
-                            HStack (spacing: 40) {
-                                
-                                Button {
-                                    movie.isFavorite.toggle()
-                                    }label: {
-                                        VStack {
-                                            Image(systemName: movie.isFavorite ? "heart.fill" : "heart")
-                                                .font(.title2)
-                                                .foregroundStyle(.rosaNeon)
-                                            
-                                            Text("Favorito")
-                                                .foregroundStyle(.rosaNeon)
-                                                .font(.system(size: 10))
-                                        
-                                    }
-                                }
-                                
-                                Button {
-                                    movie.isWatched.toggle()
-                                } label: {
-                                    VStack {
-                                        // Ícone muda com base no estado de isWatched
-                                        Image(systemName: movie.isWatched ? "eye.fill" : "eye")
-                                            .font(.title2)
-                                            .foregroundStyle(.rosaNeon)
-                                        
-                                        Text("Assistido")
-                                            .foregroundStyle(.rosaNeon)
-                                            .font(.system(size:10))
-                                    }
-                                }
-                                
-                                
-                            }
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 36)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .stroke(Color.rosaNeon)
-                            }
-                            
-                            StarRatingView(rating: $movie.rating)
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 20)
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.rosaNeon)
-                                }
-                        }
-                        
                     }
+                }
+            }
+            
+            HStack (spacing: 15){
+                VStack (spacing: 10){
+                    
+                    
+                    StarRatingView(rating: $movie.rating)
+                        .padding(.vertical, 17)
+                        .padding(.horizontal, 15)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.rosaNeon)
+                        }
+                }
+                HStack (alignment: .bottom, spacing: 20) {
+                    
+                    Button {
+                        movie.isFavorite.toggle()
+                    }label: {
+                        VStack {
+                            Image(systemName: movie.isFavorite ? "heart.fill" : "heart")
+                                .font(.title3)
+                                .foregroundStyle(.rosaNeon)
+                            Spacer()
+                                .frame(height:2)
+                            Text("Favorito")
+                                .foregroundStyle(.rosaNeon)
+                                .font(.system(size: 8))
+                            
+                        }
+                    }
+                    
+                    Button {
+                        movie.isWatched.toggle()
+                    } label: {
+                        VStack {
+                            // Ícone muda com base no estado de isWatched
+                            Image(systemName: movie.isWatched ? "eye.fill" : "eye")
+                                .font(.title3)
+                                .foregroundStyle(.rosaNeon)
+                            Spacer()
+                                .frame(height:2)
+                            Text("Assistido")
+                                .foregroundStyle(.rosaNeon)
+                                .font(.system(size:8))
+                        }
+                    }
+                    
+                    Button {
+            // ação do botão de watchlist
+                    } label: {
+                        VStack {
+                            // Ícone muda com base no estado de isWatched
+                            Image(systemName: movie.isWatched ? "bookmark.fill" : "bookmark")
+                                .font(.title3)
+                                .foregroundStyle(.rosaNeon)
+                            
+                            Text("Watchlist")
+                                .foregroundStyle(.rosaNeon)
+                                .font(.system(size:8))
+                        }
+                    }
+                    
+                    
+                }
+                .padding(.vertical, 10)
+                .padding(.horizontal, 15)
+                .overlay {
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.rosaNeon)
                 }
             }
             
@@ -136,6 +155,27 @@ struct MovieDetailView: View {
 }
 
 //
-//#Preview {
-//    MovieDetailView(movie: .constant(Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums", year: "2002", synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.", director: "Wes Anderson", writers: "Wes Anderson, Owen Wilson", isFavorite: false, isWatched: false, rating: 0, genres: ["Animação", "Comédia", "Musical"])))
-//}
+#Preview {
+    @State var previewMovie = Movie(
+        poster: "tenenbaums",
+        title: "Os Excêntricos Tenenbaums",
+        year: "2002",
+        synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.",
+        director: "Wes Anderson",
+        writers: "Wes Anderson, Owen Wilson",
+        isFavorite: false,
+        isWatched: false,
+        rating: 0,
+        genres: ["Animação", "Comédia", "Musical"]
+    )
+    
+    @State var previewSelectedTab: ContentView.tabIdentifier = .perfil
+    @State var previewGenreToSearch: String? = nil
+
+    MovieDetailView(
+        movie: $previewMovie,
+        selectedTab: $previewSelectedTab,
+        genreToSearch: $previewGenreToSearch
+    )
+    .preferredColorScheme(.dark)
+}
