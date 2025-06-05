@@ -64,8 +64,8 @@ struct ProfileView: View {
 
                     // Seção Filmes Favoritos
                     VStack(alignment: .leading, spacing: 20) {
-                        Button {
-                            //ação
+                        NavigationLink {
+                            FavoritosView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                         } label: {
                             HStack{
                                 Text("Filmes favoritos")
@@ -113,8 +113,8 @@ struct ProfileView: View {
 
                     // Seção Atividade Recente
                     VStack(alignment: .leading, spacing: 20) {
-                        Button {
-                            //ação
+                        NavigationLink {
+                            AssistidosView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                         } label: {
                             HStack {
                                 Text("Atividade recente")

@@ -43,11 +43,11 @@ struct ContentView: View {
             PesquisaView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch, initialSearchText: genreToSearch, onSearchHandled: {
                 genreToSearch = nil
             })
-            .tabItem {
-                Label("Pesquisa", systemImage: "magnifyingglass")
-            }
-            .tag(tabIdentifier.pesquisa) // Tag aplicada à PesquisaView
-            
+                .tabItem {
+                    Label("Pesquisa", systemImage: "magnifyingglass")
+                }
+                .tag(tabIdentifier.pesquisa) // Tag aplicada à PesquisaView
+                
             // Aba "Perfil"
             ProfileView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                 .tabItem {

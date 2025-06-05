@@ -63,7 +63,6 @@ struct PesquisaView: View {
                             } label: {
                                 Image(systemName: "x.circle.fill")
                                     .frame(width: 20, height: 20)
-                                .foregroundStyle(.black)
                             }
                                 .opacity(searchText.isEmpty ? 0 : 1)
                         }
@@ -129,6 +128,9 @@ struct PesquisaView: View {
                         Spacer()
                     }
                 }
+            }
+            .onTapGesture {
+                isSearchFieldFocused = false
             }
         }
         .onAppear {

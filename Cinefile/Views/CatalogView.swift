@@ -4,6 +4,7 @@
 //
 //  Created by Yasmin Salamon on 29/05/25.
 //
+
 import Foundation
 import SwiftUI
 
@@ -19,7 +20,7 @@ struct CatalogView: View {
     
     var body: some View {
         NavigationStack{
-            
+
             ZStack{
                 LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom)
                 ScrollView {
