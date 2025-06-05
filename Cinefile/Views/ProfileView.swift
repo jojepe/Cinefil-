@@ -35,6 +35,7 @@ struct ProfileView: View {
                             //ação das configurações
                         } label: {
                             Image(systemName: "gearshape")
+                                .font(.title3)
                         }
                     }
                     .padding()
@@ -86,8 +87,9 @@ struct ProfileView: View {
                                Text("Adicione seus filmes favoritos")
                                    .font(.callout)
                                    .foregroundStyle(Color.gray)
-                                   .padding(.vertical, 40)
-                                   .frame(width: 100)
+                                   .padding()
+                                   .frame(width: 120, alignment: .center)
+                                   
                                 Spacer()
                             }
                             .padding(.horizontal)
@@ -155,10 +157,10 @@ struct ProfileView: View {
                                     }
                                 }
                                 .padding(.horizontal, 25)
-                            
                             .frame(height: 180)
                         }
                     }
+                   
                     
                 }
                 .padding(.bottom, 30)
