@@ -20,7 +20,7 @@ struct StarRatingView: View {
             ForEach(1...maximumRating, id: \.self) { number in
                 image(for: number)
                     .resizable()
-                    .frame(width: 25, height: 25) // Ajuste o tamanho conforme necessário
+                    .frame(width: 20, height: 20) // Ajuste o tamanho conforme necessário
                     .foregroundColor(number > rating ? offColor : onColor)
                     .onTapGesture {
                         // Se o usuário tocar na mesma estrela que já representa o rating atual,
