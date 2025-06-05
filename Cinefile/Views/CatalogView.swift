@@ -18,6 +18,15 @@ struct CatalogView: View {
         GridItem(.adaptive(minimum: 100))
     ]
     
+    private var favoriteMovieIndices: [Int] {
+        dataModel.filmLists.indices.filter { dataModel.filmLists[$0].isFavorite }
+    }
+
+    // Propriedade computada para obter os índices dos filmes marcados como assistidos
+    private var watchedMovieIndices: [Int] {
+        dataModel.filmLists.indices.filter { dataModel.filmLists[$0].isWatched }
+    }
+    
     var body: some View {
         NavigationStack{
 

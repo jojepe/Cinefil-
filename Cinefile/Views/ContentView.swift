@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var selectedTab: tabIdentifier = .catalogo
     @State var genreToSearch: String? = nil
     
+    
     enum tabIdentifier: Hashable {
         case catalogo, pesquisa, perfil
     }
