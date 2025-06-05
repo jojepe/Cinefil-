@@ -23,7 +23,7 @@ struct CardMovieView: View {
                 .fontWeight(.medium)
                 .lineLimit(2) // Limita o texto a no máximo 2 linhas
                 .multilineTextAlignment(.leading)
-                .frame(width: 120, height: 35, alignment: .topLeading)
+                .frame(width: 120, height: 45, alignment: .topLeading)
                 .foregroundStyle(.white)
             
         }

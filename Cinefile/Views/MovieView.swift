@@ -52,8 +52,19 @@ struct MovieDetailView: View {
                 }
             }
             
-            HStack {
-                HStack (spacing: 20) {
+            HStack (spacing: 15){
+                VStack (spacing: 10){
+                    
+                    
+                    StarRatingView(rating: $movie.rating)
+                        .padding(.vertical, 17)
+                        .padding(.horizontal, 15)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.rosaNeon)
+                        }
+                }
+                HStack (alignment: .bottom, spacing: 20) {
                     
                     Button {
                         movie.isFavorite.toggle()
@@ -62,7 +73,8 @@ struct MovieDetailView: View {
                             Image(systemName: movie.isFavorite ? "heart.fill" : "heart")
                                 .font(.title3)
                                 .foregroundStyle(.rosaNeon)
-                            
+                            Spacer()
+                                .frame(height:2)
                             Text("Favorito")
                                 .foregroundStyle(.rosaNeon)
                                 .font(.system(size: 8))
@@ -78,7 +90,8 @@ struct MovieDetailView: View {
                             Image(systemName: movie.isWatched ? "eye.fill" : "eye")
                                 .font(.title3)
                                 .foregroundStyle(.rosaNeon)
-                            
+                            Spacer()
+                                .frame(height:2)
                             Text("Assistido")
                                 .foregroundStyle(.rosaNeon)
                                 .font(.system(size:8))
@@ -90,7 +103,7 @@ struct MovieDetailView: View {
                     } label: {
                         VStack {
                             // Ícone muda com base no estado de isWatched
-                            Image(systemName: movie.isWatched ? "eye.fill" : "eye")
+                            Image(systemName: movie.isWatched ? "bookmark.fill" : "bookmark")
                                 .font(.title3)
                                 .foregroundStyle(.rosaNeon)
                             
@@ -107,18 +120,6 @@ struct MovieDetailView: View {
                 .overlay {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.rosaNeon)
-                }
-                VStack (spacing: 10){
-                    
-                    
-                    
-                    StarRatingView(rating: $movie.rating)
-                        .padding(.vertical, 15)
-                        .padding(.horizontal, 20)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.rosaNeon)
-                        }
                 }
             }
             
