@@ -19,6 +19,8 @@ import SwiftUI
 struct ProfileView: View {
     
     @Binding var dataModel: DataModel
+    @Binding var selectedTab: ContentView.tabIdentifier
+    @Binding var genreToSearch: String?
 
     // Propriedade computada para obter os índices dos filmes marcados como favoritos
     private var favoriteMovieIndices: [Int] {
@@ -79,7 +81,7 @@ struct ProfileView: View {
                                 HStack(spacing: 30) { // Espaçamento entre os cards
                                     ForEach(favoriteMovieIndices, id: \.self) { index in
                                         NavigationLink {
-                                            MovieDetailView(movie: $dataModel.filmLists[index])
+                                            MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                         } label: {
                                             CardMovieView(movie: dataModel.filmLists[index])
                                         }
@@ -114,7 +116,7 @@ struct ProfileView: View {
                                 HStack(spacing: 30) {
                                     ForEach(watchedMovieIndices, id: \.self) { index in
                                         NavigationLink {
-                                            MovieDetailView(movie: $dataModel.filmLists[index])
+                                            MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                         } label: {
                                             CardMovieView(movie: dataModel.filmLists[index])
                                         }
@@ -137,22 +139,22 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    // Define um estado para a preview que simula o DataModel
-    @State static var previewDataModel: DataModel = DataModel(filmLists: [
-        Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums (Fav)", year: "2002", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: true, rating: 5),
-        Movie(poster: "land", title: "La La Land (Assistido)", year: "2017", synopsis: "...", director: "Damien Chazelle", writers: "Damien Chazelle", isFavorite: false, isWatched: true, rating: 4),
-        Movie(poster: "monica", title: "Moonrise Kingdom (Fav)", year: "2012", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: false, rating: 5),
-        Movie(poster: "outrofilme", title: "Outro Filme Qualquer", year: "2020", synopsis: "...", director: "Diretor", writers: "Roteirista", isFavorite: false, isWatched: false, rating: 3)
-    ])
-
-    static var previews: some View {
-        // Crie instâncias das suas cores customizadas aqui se elas não forem globais
-        // ou se a preview não as estiver encontrando.
-        // Exemplo:
-        // let _ = Color.menta = Color(red: 0.4, green: 0.8, blue: 0.6) // Defina suas cores
-        
-        ProfileView(dataModel: $previewDataModel)
-            .preferredColorScheme(.dark) // Para visualizar melhor com as cores escuras
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    // Define um estado para a preview que simula o DataModel
+//    @State static var previewDataModel: DataModel = DataModel(filmLists: [
+//        Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums (Fav)", year: "2002", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: true, rating: 5),
+//        Movie(poster: "land", title: "La La Land (Assistido)", year: "2017", synopsis: "...", director: "Damien Chazelle", writers: "Damien Chazelle", isFavorite: false, isWatched: true, rating: 4),
+//        Movie(poster: "monica", title: "Moonrise Kingdom (Fav)", year: "2012", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: false, rating: 5),
+//        Movie(poster: "outrofilme", title: "Outro Filme Qualquer", year: "2020", synopsis: "...", director: "Diretor", writers: "Roteirista", isFavorite: false, isWatched: false, rating: 3)
+//    ])
+//
+//    static var previews: some View {
+//        // Crie instâncias das suas cores customizadas aqui se elas não forem globais
+//        // ou se a preview não as estiver encontrando.
+//        // Exemplo:
+//        // let _ = Color.menta = Color(red: 0.4, green: 0.8, blue: 0.6) // Defina suas cores
+//        
+//        ProfileView(dataModel: $previewDataModel)
+//            .preferredColorScheme(.dark) // Para visualizar melhor com as cores escuras
+//    }
+//}

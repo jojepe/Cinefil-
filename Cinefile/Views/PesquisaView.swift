@@ -1,10 +1,15 @@
 import SwiftUI
 
 struct PesquisaView: View {
+    
     @Binding var dataModel: DataModel
     @State private var searchText = ""
+    @FocusState private var isSearchFieldFocused: Bool
     
     // let showGenre: Bool = true
+    
+    var initialSearchText: String?
+    var onSearchHandled: (() -> Void)?
     
     let columnsSearch = [
         GridItem(.adaptive(minimum: 100))
@@ -49,22 +54,22 @@ struct PesquisaView: View {
                             Image(systemName: "magnifyingglass")
                             
                             TextField("Pesquisar filmes", text: $searchText)
+                                .focused($isSearchFieldFocused)
                             
                             Button {
                                 searchText = ""
                             } label: {
-                                Image(systemName: "x.circle")
+                                Image(systemName: "x.circle.fill")
                                     .frame(width: 20, height: 20)
-                                    .foregroundStyle(.black)
+                                .foregroundStyle(.black)
                             }
+                                .opacity(searchText.isEmpty ? 0 : 1)
                         }
                             .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                             .background(Color(.systemGray6)) // Cor de fundo para o TextField
                             .cornerRadius(20)
                             .padding(.horizontal)
                             .padding(.bottom, 20)
-                            
-                        
                         
                         // 4. Atualizar a LazyVGrid para usar a lista filtrada
                         if searchText.isEmpty{
@@ -110,7 +115,7 @@ struct PesquisaView: View {
                                     
                                     if let originalIndex = dataModel.filmLists.firstIndex(where: { $0.id == movieInFilteredList.id }) {
                                         NavigationLink {
-                                            MovieDetailView(movie: $dataModel.filmLists[originalIndex])
+                                            MovieDetailView(movie: $dataModel.filmLists[originalIndex], selectedTab: .constant(.pesquisa), genreToSearch: .constant(nil))
                                         } label: {
                                             CardMovieView(movie: movieInFilteredList)
                                         }
@@ -124,11 +129,17 @@ struct PesquisaView: View {
                 }
             }
         }
+        .onAppear {
+            if let initialText = initialSearchText, !initialText.isEmpty {
+                searchText = initialText
+                onSearchHandled?() // Chama o callback para limpar o genreToSearch em ContentView
+            }
+        }
     }
 }
 
 #Preview {
-    PesquisaView(dataModel: .constant(DataModel()))
+    PesquisaView(dataModel: .constant(DataModel()), initialSearchText: "Ação")
 }
 
 

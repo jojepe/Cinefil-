@@ -10,6 +10,8 @@ import SwiftUI
 struct CatalogView: View {
     
     @Binding var dataModel: DataModel
+    @Binding var selectedTab: ContentView.tabIdentifier
+    @Binding var genreToSearch: String?
     
     let columns = [
         GridItem(.adaptive(minimum: 100))
@@ -34,13 +36,8 @@ struct CatalogView: View {
                         LazyVGrid(columns: columns, spacing: 30) {
                             ForEach(dataModel.filmLists.indices, id: \.self) { index in
                                 NavigationLink {
-                                    // 2. Crie um Binding para o elemento específico do array
-                                    //    usando o índice. `$dataModel` nos dá um Binding<DataModel>,
-                                    //    e `.filmLists[index]` acessa o Binding para o Movie.
-                                    MovieDetailView(movie: $dataModel.filmLists[index])
+                                    MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                 } label: {
-                                    // Para CardMovieView, você passa o valor imutável (o movie em si),
-                                    // a menos que CardMovieView também precise modificar o filme.
                                     CardMovieView(movie: dataModel.filmLists[index])
                                 }
                             }
