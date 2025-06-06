@@ -44,7 +44,14 @@ struct PrincipalView: View {
                             .scaledToFit()
                         
                         //seção de recomendações
-                        
+                        Button {
+                            
+                        } label: {
+                            Image("aleatorio")
+                                .resizable()
+                                .frame(width: 369, height: 159)
+                        }
+
                         
                         //Seção da watchlist
                         VStack(alignment: .leading, spacing: 20) {
@@ -99,10 +106,10 @@ struct PrincipalView: View {
                         Spacer()
                             .frame(height: 90)
                         
-                        //Seção da watchlist
+                        //Seção do catálogo
                         VStack(alignment: .leading, spacing: 20) {
-                            Button {
-                                //ação
+                            NavigationLink {
+                                CatalogView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                             } label: {
                                 HStack {
                                     Text("Catálogo completo")

@@ -35,6 +35,7 @@ struct AssistidosView: View {
                         
                         Text("Assistidos")
                             .font(.title)
+                            .foregroundStyle(.white)
                         
                         LazyVGrid(columns: columns, spacing: 30) {
                             if dataModel.filmLists.isEmpty {
