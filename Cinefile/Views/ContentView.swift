@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var selectedTab: tabIdentifier = .catalogo
     @State var genreToSearch: String? = nil
     
+    
     enum tabIdentifier: Hashable {
         case catalogo, pesquisa, perfil
     }
@@ -33,9 +34,9 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             
-            CatalogView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
+            PrincipalView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                 .tabItem {
-                    Label("Players", systemImage: "film.stack")
+                    Label("Início", systemImage: "film.stack")
                 }
                 .tag(tabIdentifier.catalogo) // Tag aplicada à CatalogView
             
