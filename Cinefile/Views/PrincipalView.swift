@@ -18,13 +18,13 @@ struct PrincipalView: View {
         GridItem(.adaptive(minimum: 100))
     ]
     
-    private var favoriteMovieIndices: [Int] {
-        dataModel.filmLists.indices.filter { dataModel.filmLists[$0].isFavorite }
-    }
-
     // Propriedade computada para obter os índices dos filmes marcados como assistidos
     private var watchedMovieIndices: [Int] {
         dataModel.filmLists.indices.filter { dataModel.filmLists[$0].isWatched }
+    }
+    
+    private var watchListMovieIndices: [Int] {
+        dataModel.filmLists.indices.filter { dataModel.filmLists[$0].isOnWatchlist }
     }
     
     var body: some View {
@@ -55,8 +55,8 @@ struct PrincipalView: View {
                         
                         //Seção da watchlist
                         VStack(alignment: .leading, spacing: 20) {
-                            Button {
-                                //ação
+                            NavigationLink {
+                                ToWatchView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                             } label: {
                                 HStack {
                                     Text("Watchlist")
@@ -71,7 +71,7 @@ struct PrincipalView: View {
                                 .padding()
                             }
                             
-                            if watchedMovieIndices.isEmpty {
+                            if watchListMovieIndices.isEmpty {
                                 VStack {
                                     ZStack {
                                         Rectangle()
@@ -91,7 +91,7 @@ struct PrincipalView: View {
                             } else {
                                 
                                     HStack(spacing: 30) {
-                                        ForEach(watchedMovieIndices, id: \.self) { index in
+                                        ForEach(watchListMovieIndices, id: \.self) { index in
                                             NavigationLink {
                                                 MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                             } label: {
@@ -103,8 +103,6 @@ struct PrincipalView: View {
                                 .frame(height: 180)
                             }
                         }
-                        Spacer()
-                            .frame(height: 90)
                         
                         //Seção do catálogo
                         VStack(alignment: .leading, spacing: 20) {
