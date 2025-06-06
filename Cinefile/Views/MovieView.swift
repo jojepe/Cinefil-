@@ -99,7 +99,7 @@ struct MovieDetailView: View {
                     }
                     
                     Button {
-            // ação do botão de watchlist
+                        movie.isOnWatchlist.toggle()
                     } label: {
                         VStack {
                             // Ícone muda com base no estado de isWatched
@@ -165,6 +165,7 @@ struct MovieDetailView: View {
         writers: "Wes Anderson, Owen Wilson",
         isFavorite: false,
         isWatched: false,
+        isOnWatchlist: false,
         rating: 0,
         genres: ["Animação", "Comédia", "Musical"]
     )

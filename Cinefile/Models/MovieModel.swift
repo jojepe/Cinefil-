@@ -9,6 +9,7 @@ import SwiftUI
 import Foundation
 
 struct Movie: Identifiable {
+    
     var id = UUID()
     
     var poster: String
@@ -20,6 +21,7 @@ struct Movie: Identifiable {
     
     var isFavorite: Bool = false
     var isWatched: Bool = false
+    var isOnWatchlist: Bool = false
     
     var rating: Int
     var maximumRating = 5
