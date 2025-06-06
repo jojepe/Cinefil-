@@ -31,8 +31,8 @@ struct ProfileView: View {
                     // Seção de Informações do Perfil (centralizada)
                     HStack {
                         Spacer()
-                        Button {
-                            //ação das configurações
+                        NavigationLink {
+                            SettingsView ()
                         } label: {
                             Image(systemName: "gearshape")
                                 .font(.title3)
