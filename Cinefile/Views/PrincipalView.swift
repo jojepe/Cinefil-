@@ -44,7 +44,7 @@ struct PrincipalView: View {
                             .scaledToFit()
                         
                         //seção de recomendações
-                        Button {
+                        NavigationLink {
                             
                         } label: {
                             Image("aleatorio")
@@ -73,19 +73,23 @@ struct PrincipalView: View {
                             
                             if watchListMovieIndices.isEmpty {
                                 VStack {
-                                    ZStack {
-                                        Rectangle()
-                                            .frame(width: 120, height:180)
-                                            .foregroundStyle(.black)
-                                            .opacity(0.5)
-                                        
-                                        Text("Adicione filmes que você quer ver")
-                                            .font(.callout)
-                                            .foregroundStyle(Color.gray)
-                                            .padding(.vertical, 40)
-                                            .frame(width: 100)
-                                        
-                                    }
+                                
+                                        NavigationLink {
+                                            CatalogView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
+                                        } label: {
+                                            ZStack {
+                                                Rectangle()
+                                                    .frame(width: 120, height:180)
+                                                    .foregroundStyle(.black)
+                                                    .opacity(0.5)
+                                                
+                                                Text("Adicione filmes que você quer ver")
+                                                    .font(.callout)
+                                                    .foregroundStyle(Color.gray)
+                                                    .padding(.vertical, 40)
+                                                    .frame(width: 100)
+                                            }
+                                        }
                                 }
                                 .padding(.horizontal)
                             } else {
@@ -121,17 +125,17 @@ struct PrincipalView: View {
                                 }
                                 .padding()
                             }
-                                    HStack(spacing: 30) {
-                                        ForEach(watchedMovieIndices, id: \.self) { index in
-                                            NavigationLink {
-                                                MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
-                                            } label: {
-                                                CardMovieView(movie: dataModel.filmLists[index])
-                                            }
-                                        }
+                            HStack(spacing: 30) {
+                                ForEach(watchedMovieIndices.prefix(3), id: \.self) { index in
+                                    NavigationLink {
+                                        MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
+                                    } label: {
+                                        CardMovieView(movie: dataModel.filmLists[index])
                                     }
-                                    .padding(.horizontal, 25)
-                                .frame(height: 180)
+                                }
+                            }
+                            .padding(.horizontal, 25)
+                        .frame(height: 180)
                             }
                         }
                         Spacer()

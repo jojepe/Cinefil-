@@ -62,6 +62,8 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity) // Centraliza o conteúdo do VStack de perfil
                     .padding(.top, 20)
 
+                    
+                    
                     // Seção Filmes Favoritos
                     VStack(alignment: .leading, spacing: 20) {
                         NavigationLink {
@@ -79,24 +81,28 @@ struct ProfileView: View {
                         }
 
                         if favoriteMovieIndices.isEmpty {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 120, height:180)
-                                    .foregroundStyle(.black)
-                                    .opacity(0.5)
-                               Text("Adicione seus filmes favoritos")
-                                   .font(.callout)
-                                   .foregroundStyle(Color.gray)
-                                   .padding()
-                                   .frame(width: 120, alignment: .center)
-                                   
-                                Spacer()
+                            NavigationLink {
+                                CatalogView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .frame(width: 120, height:180)
+                                        .foregroundStyle(.black)
+                                        .opacity(0.5)
+                                   Text("Adicione seus filmes favoritos")
+                                       .font(.callout)
+                                       .foregroundStyle(Color.gray)
+                                       .padding()
+                                       .frame(width: 120, alignment: .center)
+                                       
+                                    Spacer()
+                                }
                             }
                             .padding(.horizontal)
                         } else {
                             
                                 HStack(spacing: 30) { // Espaçamento entre os cards
-                                    ForEach(favoriteMovieIndices, id: \.self) { index in
+                                    ForEach(favoriteMovieIndices.prefix(3), id: \.self) { index in
                                         NavigationLink {
                                             MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                         } label: {
@@ -120,35 +126,36 @@ struct ProfileView: View {
                                 Text("Atividade recente")
                                     .font(.title3.bold())
                                     .foregroundStyle(Color.white)
-                                    
-                                
                                 Spacer()
                                 Image(systemName: "chevron.right")
-
                             }
                             .padding()
                         }
                         
                         if watchedMovieIndices.isEmpty {
-                            ZStack {
-                                 Rectangle()
-                                     .frame(width: 120, height:180)
-                                     .foregroundStyle(.black)
-                                     .opacity(0.5)
-                                 
-                                Text("Adicione seus filmes assistidos")
-                                    .font(.callout)
-                                    .foregroundStyle(Color.gray)
-                                    .padding(.vertical, 40)
-                                    .frame(width: 100)
-                                 
-                                Spacer()
+                            NavigationLink {
+                                CatalogView(dataModel: $dataModel, selectedTab: $selectedTab, genreToSearch: $genreToSearch)
+                            } label: {
+                                ZStack {
+                                     Rectangle()
+                                         .frame(width: 120, height:180)
+                                         .foregroundStyle(.black)
+                                         .opacity(0.5)
+                                     
+                                    Text("Adicione seus filmes assistidos")
+                                        .font(.callout)
+                                        .foregroundStyle(Color.gray)
+                                        .padding(.vertical, 40)
+                                        .frame(width: 100)
+                                     
+                                    Spacer()
+                                }
                             }
                             .padding(.horizontal)
                         } else {
                             
                                 HStack(spacing: 30) {
-                                    ForEach(watchedMovieIndices, id: \.self) { index in
+                                    ForEach(watchedMovieIndices.prefix(3), id: \.self) { index in
                                         NavigationLink {
                                             MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                         } label: {
@@ -173,22 +180,22 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    @State static var previewDataModel: DataModel = DataModel(filmLists: [
-        Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums (Fav)", year: "2002", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: true, rating: 5),
-        Movie(poster: "land", title: "La La Land (Assistido)", year: "2017", synopsis: "...", director: "Damien Chazelle", writers: "Damien Chazelle", isFavorite: true, isWatched: true, rating: 4),
-        Movie(poster: "monica", title: "Moonrise Kingdom (Fav)", year: "2012", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: false, rating: 5),
-    ])
-    
-    @State static var previewSelectedTab: ContentView.tabIdentifier = .perfil // Use a opção correta aqui
-    @State static var previewGenreToSearch: String? = nil
-
-    static var previews: some View {
-        ProfileView(
-            dataModel: $previewDataModel,
-            selectedTab: $previewSelectedTab,
-            genreToSearch: $previewGenreToSearch
-        )
-        .preferredColorScheme(.dark)
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    @State static var previewDataModel: DataModel = DataModel(filmLists: [
+//        Movie(poster: "tenenbaums", title: "Os Excêntricos Tenenbaums (Fav)", year: "2002", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: true, rating: 5),
+//        Movie(poster: "land", title: "La La Land (Assistido)", year: "2017", synopsis: "...", director: "Damien Chazelle", writers: "Damien Chazelle", isFavorite: true, isWatched: true, rating: 4),
+//        Movie(poster: "monica", title: "Moonrise Kingdom (Fav)", year: "2012", synopsis: "...", director: "Wes Anderson", writers: "Wes Anderson", isFavorite: true, isWatched: false, rating: 5),
+//    ])
+//    
+//    @State static var previewSelectedTab: ContentView.tabIdentifier = .perfil // Use a opção correta aqui
+//    @State static var previewGenreToSearch: String? = nil
+//
+//    static var previews: some View {
+//        ProfileView(
+//            dataModel: $previewDataModel,
+//            selectedTab: $previewSelectedTab,
+//            genreToSearch: $previewGenreToSearch
+//        )
+//        .preferredColorScheme(.dark)
+//    }
+//}

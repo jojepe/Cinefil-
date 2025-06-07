@@ -103,7 +103,7 @@ struct MovieDetailView: View {
                     } label: {
                         VStack {
                             // Ícone muda com base no estado de isWatched
-                            Image(systemName: movie.isWatched ? "bookmark.fill" : "bookmark")
+                            Image(systemName: movie.isOnWatchlist ? "bookmark.fill" : "bookmark")
                                 .font(.title3)
                                 .foregroundStyle(.rosaNeon)
                             
