@@ -126,7 +126,7 @@ struct PrincipalView: View {
                                 .padding()
                             }
                             HStack(spacing: 30) {
-                                ForEach(watchedMovieIndices.prefix(3), id: \.self) { index in
+                                ForEach(dataModel.filmLists.indices.prefix(3), id: \.self) { index in
                                     NavigationLink {
                                         MovieDetailView(movie: $dataModel.filmLists[index], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                                     } label: {
@@ -141,6 +141,9 @@ struct PrincipalView: View {
                         Spacer()
                             .frame(height: 90)
                     }
+                .background(LinearGradient(gradient: Gradient(colors: [.fundoEscuro, .fundoClaro]), startPoint: .top, endPoint: .bottom).ignoresSafeArea())
+                .navigationBarTitleDisplayMode(.inline)
+      
                     
                 }
             }
