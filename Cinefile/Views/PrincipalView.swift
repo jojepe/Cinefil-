@@ -14,6 +14,7 @@ struct PrincipalView: View {
     @Binding var selectedTab: ContentView.tabIdentifier
     @Binding var genreToSearch: String?
     
+    
     let columns = [
         GridItem(.adaptive(minimum: 100))
     ]
@@ -26,6 +27,8 @@ struct PrincipalView: View {
     private var watchListMovieIndices: [Int] {
         dataModel.filmLists.indices.filter { dataModel.filmLists[$0].isOnWatchlist }
     }
+    
+    var numMovie = ContentView().numeroAleatorio
     
     var body: some View {
         NavigationStack{
@@ -45,7 +48,7 @@ struct PrincipalView: View {
                         
                         //seção de recomendações
                         NavigationLink {
-                            
+                            MovieDetailView(movie: $dataModel.filmLists[numMovie], selectedTab: $selectedTab, genreToSearch: $genreToSearch)
                         } label: {
                             Image("aleatorio")
                                 .resizable()

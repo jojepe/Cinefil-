@@ -40,7 +40,7 @@ struct ToWatchView: View {
                         Spacer()
                             .frame(height: 80)
                         
-                        Text("Minha Lista")
+                        Text("Watchlist")
                             .font(.title)
                             .foregroundStyle(.white)
                         

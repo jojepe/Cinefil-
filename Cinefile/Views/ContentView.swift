@@ -13,12 +13,15 @@ struct ContentView: View {
     @State var selectedTab: tabIdentifier = .catalogo
     @State var genreToSearch: String? = nil
     
+    var numeroAleatorio = 0
+    
     
     enum tabIdentifier: Hashable {
         case catalogo, pesquisa, perfil
     }
     
     init() {
+        
         let appearance = UITabBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
@@ -27,6 +30,9 @@ struct ContentView: View {
         if #available(iOS 15.0, *) {
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
+        
+        numeroAleatorio = Int.random(in: 1...dataModel.filmLists.indices.count)
+        
     }
     
     

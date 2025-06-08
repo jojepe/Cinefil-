@@ -155,28 +155,28 @@ struct MovieDetailView: View {
 }
 
 //
-#Preview {
-    @State var previewMovie = Movie(
-        poster: "tenenbaums",
-        title: "Os Excêntricos Tenenbaums",
-        year: "2002",
-        synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.",
-        director: "Wes Anderson",
-        writers: "Wes Anderson, Owen Wilson",
-        isFavorite: false,
-        isWatched: false,
-        isOnWatchlist: false,
-        rating: 0,
-        genres: ["Animação", "Comédia", "Musical"]
-    )
-    
-    @State var previewSelectedTab: ContentView.tabIdentifier = .perfil
-    @State var previewGenreToSearch: String? = nil
-
-    MovieDetailView(
-        movie: $previewMovie,
-        selectedTab: $previewSelectedTab,
-        genreToSearch: $previewGenreToSearch
-    )
-    .preferredColorScheme(.dark)
-}
+//#Preview {
+//    @State var previewMovie = Movie(
+//        poster: "tenenbaums",
+//        title: "Os Excêntricos Tenenbaums",
+//        year: "2002",
+//        synopsis: "Royal e sua esposa Etheline tiveram três filhos muito diferentes entre si, mas igualmente bem-sucedidos. Quando Etheline resolve se casar com outro, o irresponsável e excêntrico Royal resolve lutar por seu amor reunindo toda a família.",
+//        director: "Wes Anderson",
+//        writers: "Wes Anderson, Owen Wilson",
+//        isFavorite: false,
+//        isWatched: false,
+//        isOnWatchlist: false,
+//        rating: 0,
+//        genres: ["Animação", "Comédia", "Musical"]
+//    )
+//    
+//    @State var previewSelectedTab: ContentView.tabIdentifier = .perfil
+//    @State var previewGenreToSearch: String? = nil
+//
+//    MovieDetailView(
+//        movie: $previewMovie,
+//        selectedTab: $previewSelectedTab,
+//        genreToSearch: $previewGenreToSearch
+//    )
+//    .preferredColorScheme(.dark)
+//}
